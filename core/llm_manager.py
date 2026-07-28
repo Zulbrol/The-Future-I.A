@@ -33,9 +33,10 @@ class LLMManager:
 
 
     def perguntar(
-        self,
-        mensagem,
-        modelo=None
+     self,
+     prompt_sistema,
+     mensagem_usuario,
+     modelo=None
     ):
 
 
@@ -55,10 +56,14 @@ class LLMManager:
 
             messages=[
                 {
+                    "role":"system",
+                    "content": prompt_sistema
+                },
+                {
                     "role":"user",
-                    "content":mensagem
-                }
-            ],
+                    "content": mensagem_usuario
+                 }
+],
 
 
             temperature=configuracao["temperature"],

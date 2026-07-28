@@ -1,0 +1,16 @@
+{
+    "modelo_padrao": "qwen",
+
+    "modelos": {
+
+        "qwen": {
+
+            "nome": "qwen2.5-coder-1.5b-instruct-q3_k_m.gguf",
+
+            "temperature": 0.3,
+
+            "tokens": 4096
+        }
+
+    }
+}

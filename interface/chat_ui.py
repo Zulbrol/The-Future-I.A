@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import scrolledtext, ttk
+import traceback
 import threading
 import json
 import os
@@ -747,21 +748,32 @@ class FutureChat:
     def processar_ia(self, mensagem):
         """Processa a mensagem com a IA"""
         try:
-            resposta = self.orchestrator.processar_solicitacao(
-                mensagem
-            )
-            
+            resposta = self.orchestrator.processar_solicitacao(mensagem)
+
             self.janela.after(
-                0,
-                lambda: self.adicionar_mensagem("Assistente", resposta)
+            0,
+            lambda: self.adicionar_mensagem(
+                "Assistente",
+                resposta
             )
-            
+        )
+
         except Exception as erro:
-            self.janela.after(
-                0,
-                lambda: self.adicionar_mensagem("Erro", str(erro))
+         traceback.print_exc()
+
+         print("TIPO DO ERRO:", type(erro))
+         print("REPR:", repr(erro))
+         print("STR:", str(erro))
+
+         mensagem_erro = repr(erro)
+
+         self.janela.after(
+            0,
+            lambda m=mensagem_erro: self.adicionar_mensagem(
+                "Erro",
+                m
             )
-            
+        )            
     def iniciar(self):
         """Inicia a aplicação"""
         self.entrada.focus()

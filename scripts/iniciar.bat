@@ -1,0 +1,1 @@
+.\llamafile-0.10.4.exe -ngl 0 --server --model qwen2.5-coder-1.5b-instruct-q3_k_m.gguf
